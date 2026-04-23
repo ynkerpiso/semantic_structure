@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Semantic Layout UI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="mode1">
+    <!-- ========================= -->
+    <!-- MENU -->
+    <!-- ========================= -->
+    <div id="menuBtn">⬇</div>
+
+    <!-- ✅ EDIT INDICATOR (FIXED POSITION) -->
+    <div id="editIndicator">
+  ✏️ <span>Edit Mode</span>
+  <b>ON</b>
+</div>
+
+    <div id="dropdown">
+      <button onclick="cycleMode(event)">🎨 Change Mode</button>
+      <div id="editBtn">✏️ Edit</div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- MAIN LAYOUT -->
+    <!-- ========================= -->
+    <div class="container">
+      <header data-info>
+        <div class="info">Top of the page</div>
+        <div class="header-label main-text">HEADER</div>
+      </header>
+
+      <nav data-info>
+        <div class="info">Navigation</div>
+        <div class="nav-label main-text">NAVIGATION BAR</div>
+
+        <button data-action="home">Home</button>
+        <button data-target="s1">Section 1</button>
+        <button data-target="s2">Section 2</button>
+        <button data-target="a1">Article 1</button>
+        <button data-target="a2">Article 2</button>
+
+        <button class="add-btn nav-add" id="addNavBtn">+</button>
+      </nav>
+
+      <main>
+        <section data-info>
+          <div class="info">Grouped content</div>
+          <div class="main-text">Section</div>
+          <div class="mini">Used for grouping related content</div>
+
+          <div class="inner">
+            <div id="s1">Section1</div>
+            <div id="s2">Section2</div>
+
+            <button class="add-btn inner-add" id="addSectionBtn">+</button>
+          </div>
+        </section>
+
+        <article data-info>
+          <div class="info">Independent content</div>
+          <div class="main-text">Article</div>
+          <div class="mini">Standalone content</div>
+
+          <div class="inner">
+            <div id="a1">Article1</div>
+            <div id="a2">Article2</div>
+
+            <button class="add-btn inner-add" id="addArticleBtn">+</button>
+          </div>
+        </article>
+      </main>
+
+      <aside data-info>
+        <div class="info">Sidebar</div>
+        <div class="main-text">Aside</div>
+      </aside>
+
+      <footer data-info>
+        <div class="info">Bottom of the page</div>
+        <div class="footer-label main-text">FOOTER</div>
+      </footer>
+    </div>
+
+    <!-- ========================= -->
+    <!-- PANEL OVERLAY -->
+    <!-- ========================= -->
+    <div id="panelOverlay"></div>
+
+    <!-- ========================= -->
+    <!-- INFO PANEL -->
+    <!-- ========================= -->
+    <div id="panel">
+      <div class="panel-header">
+        <span id="panelTitle">HTML Info</span>
+        <span id="closeBtn">✖</span>
+      </div>
+
+      <div class="panel-content">
+        <div class="panel-block">
+          <div class="panel-label">📘 Description</div>
+          <div id="desc" class="desc"></div>
+        </div>
+
+        <div class="panel-block">
+          <div class="panel-label">💻 HTML Code</div>
+          <pre id="code"></pre>
+        </div>
+
+        <div class="panel-block">
+          <div class="panel-label">🧪 Example</div>
+          <div id="example" class="example"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLASH -->
+    <div id="flashOverlay"></div>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+  </body>
+</html>
