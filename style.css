@@ -13,11 +13,12 @@ body {
 .container {
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   padding: 20px;
   display: grid;
   gap: 25px;
-  grid-template-areas: "header header""nav nav""main aside""footer footer";
+  grid-template-areas: "header header" "nav nav" "main aside" "footer footer";
   grid-template-columns: 3fr 1fr;
 }
 
@@ -53,7 +54,9 @@ article,
 aside,
 footer {
   text-align: center;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
 }
 
 header {
@@ -526,18 +529,14 @@ header .info {
   animation: flashPage 0.5s ease;
 }
 
-@keyframes flashPage{
+@keyframes flashPage {
+  0% {
+    opacity: 1;
+  }
 
-
-	0% {
-		opacity: 1;
-	}
-
-	100% {
-		opacity: 0;
-	}
-
-
+  100% {
+    opacity: 0;
+  }
 }
 
 .ripple {
@@ -549,15 +548,11 @@ header .info {
   pointer-events: none;
 }
 
-@keyframes rippleAnim{
-
-
-	to {
-		transform: scale(4);
-		opacity: 0;
-	}
-
-
+@keyframes rippleAnim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 .sibling-highlight {
@@ -575,50 +570,42 @@ header .info {
   will-change: transform, box-shadow;
 }
 
-@keyframes flashPulse{
+@keyframes flashPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 var(--flash-color);
+  }
 
+  40% {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px var(--flash-color);
+  }
 
-	0% {
-		transform: scale(1);
-		box-shadow: 0 0 0 var(--flash-color);
-	}
-
-	40% {
-		transform: scale(1.08);
-		box-shadow: 0 0 35px var(--flash-color);
-	}
-
-	100% {
-		transform: scale(1);
-		box-shadow: 0 0 0 transparent;
-	}
-
-
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 transparent;
+  }
 }
 
 nav button.active-btn {
   animation: btnPulse 0.4s ease;
 }
 
-@keyframes btnPulse{
+@keyframes btnPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
 
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
 
-	0% {
-		transform: scale(1);
-		box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-	}
-
-	50% {
-		transform: scale(1.08);
-		box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-	}
-
-	100% {
-		transform: scale(1);
-		box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-	}
-
-
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 html,
@@ -691,8 +678,8 @@ nav button[contenteditable="true"],
 .nav-label[contenteditable="true"],
 .header-label[contenteditable="true"],
 .footer-label[contenteditable="true"],
-section> :not(.inner):not(.mini):not(.info)[contenteditable="true"],
-article> :not(.inner):not(.mini):not(.info)[contenteditable="true"],
+section > :not(.inner):not(.mini):not(.info)[contenteditable="true"],
+article > :not(.inner):not(.mini):not(.info)[contenteditable="true"],
 aside[contenteditable="true"] {
   outline: none !important;
 }
@@ -779,15 +766,11 @@ aside {
   animation-delay: 0.2s;
 }
 
-@keyframes fadeInUp{
-
-
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .add-btn {
@@ -803,13 +786,13 @@ aside {
   justify-content: center;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   transition: all 0.25s ease;
 }
 
 .add-btn:hover {
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .add-btn:active {
@@ -865,15 +848,11 @@ aside {
   animation: rippleAnim 0.5s linear;
 }
 
-@keyframes rippleAnim{
-
-
+@keyframes rippleAnim {
   to {
     transform: scale(3);
     opacity: 0;
   }
-
-
 }
 
 body.mode1 #addNavBtn:hover {
@@ -980,8 +959,6 @@ body.mode3 #addArticleBtn {
   background: linear-gradient(135deg, #075f28aa, #1fd662aa);
 }
 
-
-
 #editIndicator {
   position: fixed;
   top: 15px;
@@ -1047,3 +1024,109 @@ body.mode3 #addArticleBtn {
   }
 }
 
+@media (max-width: 1024px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  aside {
+    min-height: 120px;
+  }
+
+  .header-label,
+  .footer-label {
+    font-size: clamp(30px, 8vw, 60px);
+    letter-spacing: clamp(5px, 3vw, 30px);
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  header,
+  footer {
+    padding: 15px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  nav button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .inner {
+    flex-wrap: wrap;
+  }
+
+  .inner div {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+  }
+
+  #menuBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  #dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+
+  #panel {
+    width: 95vw;
+    height: 85vh;
+  }
+
+  .panel-content {
+    padding: 12px;
+  }
+
+  #editIndicator {
+    font-size: 16px;
+    padding: 6px 12px;
+    left: 70px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-label,
+  .footer-label {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+
+  nav button {
+    flex: 1 1 45%;
+  }
+
+  .inner div {
+    width: 50px;
+    height: 50px;
+  }
+}
